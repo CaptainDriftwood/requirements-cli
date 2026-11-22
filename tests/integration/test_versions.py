@@ -2,6 +2,7 @@
 
 import pathlib
 import urllib.error
+from email.message import Message
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -115,7 +116,7 @@ def test_versions_command_package_not_found(cli_runner: CliRunner) -> None:
         url="https://pypi.org/simple/nonexistent/",
         code=404,
         msg="Not Found",
-        hdrs={},  # type: ignore[arg-type]
+        hdrs=Message(),
         fp=None,
     )
 
@@ -181,7 +182,7 @@ def test_versions_command_http_error(cli_runner: CliRunner) -> None:
         url="https://pypi.org/simple/requests/",
         code=500,
         msg="Internal Server Error",
-        hdrs={},  # type: ignore[arg-type]
+        hdrs=Message(),
         fp=None,
     )
 

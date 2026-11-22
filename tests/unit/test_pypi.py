@@ -1,6 +1,7 @@
 """Tests for PyPI Simple API client."""
 
 import urllib.error
+from email.message import Message
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -221,7 +222,7 @@ def test_fallback_uses_fallback_on_server_error(mock_pypi_response: MagicMock) -
                 url=request.full_url,
                 code=500,
                 msg="Internal Server Error",
-                hdrs={},  # type: ignore[arg-type]
+                hdrs=Message(),
                 fp=None,
             )
         return mock_pypi_response
@@ -243,7 +244,7 @@ def test_fallback_no_fallback_on_404() -> None:
         url="https://primary.example.com/simple/nonexistent/",
         code=404,
         msg="Not Found",
-        hdrs={},  # type: ignore[arg-type]
+        hdrs=Message(),
         fp=None,
     )
 
@@ -333,7 +334,7 @@ def test_fetch_with_config_tries_extra_urls(mock_pypi_response: MagicMock) -> No
                 url=request.full_url,
                 code=404,
                 msg="Not Found",
-                hdrs={},  # type: ignore[arg-type]
+                hdrs=Message(),
                 fp=None,
             )
         return mock_pypi_response
@@ -378,7 +379,7 @@ def test_fetch_with_config_no_fallback_when_all_404() -> None:
         url="test",
         code=404,
         msg="Not Found",
-        hdrs={},  # type: ignore[arg-type]
+        hdrs=Message(),
         fp=None,
     )
 
