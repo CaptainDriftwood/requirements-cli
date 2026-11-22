@@ -101,6 +101,7 @@ ignore = [
     "C901",  # too complex
     "W191",  # indentation contains tabs
     "PLR0913", # too many arguments to function call
+    "PLR0917", # too many positional arguments (click and pytest supply them)
     "PLR0912", # too many branches
     "PLR0915", # too many statements
     "PLR2004", # magic value used in comparison
