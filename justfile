@@ -68,3 +68,7 @@ install:
 # Run tests across all supported Python versions
 nox *ARGS:
     uvx nox {{ ARGS }}
+
+# Audit dependencies for known vulnerabilities and adverse project statuses
+audit:
+    uv audit --locked
