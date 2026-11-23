@@ -52,7 +52,7 @@ upgrade:
 
 # Run ty type checker against all Python files
 type:
-    @uv run --with ty ty check src tests
+    @uv run ty check src tests
 
 # Run all quality checks (format, lint, type, test)
 check: format lint type test
